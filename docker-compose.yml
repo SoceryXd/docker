@@ -1,0 +1,40 @@
+services:
+# banco de dados mySQL
+    db:
+        image: mysql:5.7.22 # imagem do docker hub escolhida
+        platform: linux/x86_64 # SO escolhido para o Banco
+        restart: unless-stopped # serviço sempre reiniciado
+        container_name: python-db # nome do serviço
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE:-python}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-python}
+            MYSQL_USER: ${DB_USERNAME:-python}
+        volumes: # pastas espelhadas no container
+            - ./.dados/mysql/dbdata:/var/lib/mysql
+        ports: # portas de acesso
+            - "3308:3306"
+        networks: 
+        - python_network
+
+    # serviços são os containers no Docker que são como VM's
+    # o Docker não tem uma "tela" para uso
+    # noVNC - para dar acesso à tela do container Ubuntu
+    python:
+        # a construção (copiar) será na raiz da pasta
+        build: .
+        # porta da VM : Porta no container
+        ports:
+        - "8090:7092"
+        # persistência/cópia de dados
+        volumes:
+        - ./src:/src
+        environment:
+        - DISPLAY=:0
+        tty: true    
+        
+
+ 
+networks:
+    python_network: # nome da rede
+        driver: bridge # permite a comunicação em rede entre os containers

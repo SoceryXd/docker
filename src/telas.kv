@@ -1,0 +1,52 @@
+# Definição da tela SplashScreen
+<SplashScreen>:
+    id: splash
+    FloatLayout:
+        Image:
+            source: 'images/logo.png' # caminho
+            size_hint: 0.7, 0.7 # tamanho em 50%
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+ 
+        Label:
+            text: 'Desenvolvido por T98 © 2024'
+            font_size: '16sp'
+            color: 1, 0, 0, 1
+            font_name: "MinhaFonte"
+            pos_hint: {'center_x': 0.5, 'y': -0.4 }
+
+
+
+<AcessoScreen>:
+    id: acessar
+    FloatLayout:
+        Image:
+            source: 'images/logo.png' # caminho
+            size_hint: 0.7, 0.7 # tamanho em 50%
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+
+        Label:
+            source: 'images/rotulo.png'
+            text: 'Acessar'
+            font_size: '20sp'
+            color: 1, 0, 0, 1
+            font_name: "MinhaFonte"
+            pos_hint: {'center_x': 0.5, 'y': 0.5 }
+
+
+# Tela Login
+<LoginScreen>:
+    id: login
+    FloatLayout:
+        Image:
+            source: 'images/fundo.png' 
+            fit_mode: 'fill'
+             
+        TextInput:
+            hint_text: 'Seu melhor email'
+            font_size: "14sp" 
+
+        TextInput:
+            hint_text: 'Sua senha' 
+            font_size: "14sp" 
+        
