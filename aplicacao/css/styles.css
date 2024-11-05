@@ -1,0 +1,236 @@
+:root
+{
+    --corPrincipal: #009;
+    --fonte: Verdana;
+    --margemInterna: 5px;
+}
+ 
+*
+{
+    padding: 0;
+    margin: 0;
+}
+ 
+/* torna as imgs responsivas */
+img
+{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+ 
+.telefones
+{
+    background: var(--corPrincipal);
+    padding: var(--margemInterna);
+    padding-right: 14%;
+    display: flex;
+    justify-content: end;
+}
+ 
+.telefones p a
+{
+    color: #fff;
+    text-decoration: none;/* none underline line-through  */
+    margin-right: 30px;
+}
+ 
+h1,
+h2
+{
+    width: 100%;
+    font-size: 1.5rem;
+}
+ 
+/*-----------------------------------------
+            Topo
+-----------------------------------------*/
+header
+{
+    height: 90px;
+    /*overflow: hidden; esconde o que passar do height/width */
+    display: flex;
+    justify-content: space-between; /* horizontal center start end */
+    align-items: center;/* vertical */
+    padding: 0 14% 0 14%;
+}
+ 
+header figure
+{
+    padding: var(--margemInterna);
+    width: 14%;
+    align-self: start;/* muda o alinhamento vertical deste item */
+}
+ 
+.esconde
+{
+    display: none;
+}
+
+ 
+/*-----------------------------------------
+            Menu
+-----------------------------------------*/
+header nav ul li
+{
+    display: inline-block;
+    list-style-type: none;
+    position: relative;
+}
+ 
+/*  links em repouso */
+header nav ul li a
+{
+    font: 1.1rem var(--fonte);/* 1rem é o tamanho padrão da fonte do navegador (16px) */
+    color: #333;
+    text-decoration: none;/* remove o underline */
+    padding: 6px 15px;
+    transition: all 0.3s ease-in-out;
+}
+ 
+/* link hover mouse sobre o link */
+header nav ul li:hover a,
+.paginaAtual
+{
+    color: #f90;
+    transition: all 0.5s ease-in-out; /* anima as alterações do hover */
+}
+ 
+/* barrinha abaixo dos links*/
+header nav ul li a::before
+{
+    content: "";
+    width: 0%;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    bottom: -8px;
+    background: var(--corPrincipal);
+    box-shadow: 0 0 3px var(--corPrincipal);
+    transition: all 0.3s ease-in-out;
+}
+ 
+header nav ul li:hover a::before,
+.paginaAtual::before
+{
+    width: 90%;
+    transition: all 0.5s ease-in-out;
+}
+ 
+header nav ul li {
+    position: relative;
+}
+
+
+header nav ul li ul {
+    padding: 10px 20px;
+    position: absolute;
+    z-index: 300!important;
+    top: 40px;
+    right:-90%;
+    background: orange;
+}
+
+header nav ul li ul li ul{
+    background: red;
+}
+
+
+/*-----------------------------------------
+            Slide
+-----------------------------------------*/
+.splide
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+ 
+.splide__progress__bar {
+  height: 3px;
+  background: var(--corPrincipal);
+}
+ 
+/*-----------------------------------------
+            Conteúdos
+-----------------------------------------*/
+main
+{
+    padding: 2rem 14%;
+    display: flex;
+    justify-content: space-between;
+}
+ 
+main section
+{
+    padding: 0 1%;
+}
+ 
+main section > *
+{
+    margin-top: 1.2rem;
+}
+ 
+main section ul
+{
+    list-style-position: inside;
+}
+ 
+main figure
+{
+    width: 35%;
+}
+ 
+article
+{
+    width: 72%;
+    padding: 0 14%;
+    display: flex;
+    flex-direction: column;
+}
+ 
+article div
+{
+    width: 100%;
+    display: flex;
+    margin-top: 1.2rem;
+    justify-content: space-between;
+}
+ 
+article figure
+{
+    width: 15%;
+   
+}
+ 
+article figcaption a
+{
+    margin-top: 1.2rem;
+    color: #333;
+    text-decoration: none;
+}
+ 
+footer
+{
+    background: #333;
+    padding: 1.5rem 14%;
+    margin-top: 2rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+}
+ 
+footer ul li
+{
+    list-style-type: none;
+    display: inline-block;
+    margin: 1rem 2rem;
+}
+ 
+footer ul li a
+{
+    color: #fff;
+    text-decoration: none;
+}

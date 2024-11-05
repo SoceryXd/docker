@@ -1,0 +1,12 @@
+.splide
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.splide__progress__bar {
+  height: 3px;
+  background: var(--corPrincipal);
+}

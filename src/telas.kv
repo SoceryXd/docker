@@ -1,11 +1,13 @@
+#------------------------------------
 # Definição da tela SplashScreen
+#------------------------------------
 <SplashScreen>:
     id: splash
     FloatLayout:
         Image:
             source: 'images/logo.png' # caminho
-            size_hint: 0.7, 0.7 # tamanho em 50%
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            size_hint: 0.5, 0.6 # tamanho em 50%
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
  
         Label:
             text: 'Desenvolvido por T98 © 2024'
@@ -13,40 +15,77 @@
             color: 1, 0, 0, 1
             font_name: "MinhaFonte"
             pos_hint: {'center_x': 0.5, 'y': -0.4 }
-
-
-
-<AcessoScreen>:
-    id: acessar
+ 
+ 
+#------------------------------------
+# Definição da tela SplashScreen
+#------------------------------------
+ # Tela Login
+<LoginScreen>:
+    id: login
+    # BoxLayout coloca os componentes um abaixo/lado do outro
+    # similar ao display flex do css
+    # dp é baseado no pixel da tela
+    # sp é baseado na altura da fonte
+   
     FloatLayout:
+     # imagem de fundo
         Image:
-            source: 'images/logo.png' # caminho
-            size_hint: 0.7, 0.7 # tamanho em 50%
+            source: 'images/fundo.png'
+            fit_mode: 'fill'
+            allow_stretch: True # permite o aumento da img
+            keep_ratio: True # manter a proporção da img
+ 
+    BoxLayout:
+        orientation:'vertical'
+        spacing: '20dp' # margim para os componentes
+        padding: '10sp'
+       
+       
+ 
+        #logo
+        Image:
+            source: 'images/logo.png'
+            size_hint: 1, 1
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-
+ 
         Label:
-            source: 'images/rotulo.png'
             text: 'Acessar'
             font_size: '20sp'
             color: 1, 0, 0, 1
             font_name: "MinhaFonte"
-            pos_hint: {'center_x': 0.5, 'y': 0.5 }
-
-
-# Tela Login
-<LoginScreen>:
-    id: login
-    FloatLayout:
-        Image:
-            source: 'images/fundo.png' 
-            fit_mode: 'fill'
-             
+            pos_hint: {'center_x': 0.5, 'y': 0.0 }
+            size_hint: None, None # sem tamanho
+ 
+ 
         TextInput:
-            hint_text: 'Seu melhor email'
-            font_size: "14sp" 
-
+            hint_text: 'Seu melhor E-mail'
+            font_size: '14sp'
+            size_hint: 0.9, 0.3 # x y
+            pos_hint:{'center_x': 0.5, 'center_y': 0.5} #center
+            padding: ('10sp', '15sp', '10sp', '5sp') #letf top right bottom
+            spacing: '10dp'
+            background_normal: 'images/imagenfundo.png'
+ 
         TextInput:
-            hint_text: 'Sua senha' 
-            font_size: "14sp" 
-        
+            hint_text: 'Sua senha'
+            font_size: '14sp'
+            size_hint: 0.9, 0.3
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            padding: ('10sp','15sp','10sp','5sp')
+            password: True # oculta a senha do usuário
+            background_normal: 'images/imagenfundo.png'
+ 
+        Button:
+            text:'Entrar'
+            font_size:'16sp'
+            size_hint: 0.3,0.3
+            pos_hint: {'center_x':0.7, 'center_y': 0.5}
+ 
+            # #F1 46 24 - 15 * 16 +
+            #rgb ( 241,70,36 )
+            # 241 / 255 = .94, 70 / 255 = 0.27 , 36 / 255 = 0.14
+            background_color: [0.94,0.27,0.14,1] # red green blue alpha
+            background_normal: 'images/fundoLaranja.png' # coloca imagem de fundo fe004f
+            background_down: 'images/ fundoRosa.png'
+            size_hint: 0.5 , 0.3
