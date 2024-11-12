@@ -4,21 +4,21 @@
     --fonte: Verdana;
     --margemInterna: 5px;
 }
- 
+
 *
 {
     padding: 0;
     margin: 0;
 }
- 
+
 /* torna as imgs responsivas */
-img
+img 
 {
     width: 100%;
     height: auto;
     display: inline-block;
 }
- 
+
 .telefones
 {
     background: var(--corPrincipal);
@@ -27,49 +27,48 @@ img
     display: flex;
     justify-content: end;
 }
- 
+
 .telefones p a
 {
     color: #fff;
     text-decoration: none;/* none underline line-through  */
     margin-right: 30px;
 }
- 
+
 h1,
 h2
 {
     width: 100%;
     font-size: 1.5rem;
 }
- 
+
 /*-----------------------------------------
             Topo
 -----------------------------------------*/
 header
 {
     height: 90px;
-    /*overflow: hidden; esconde o que passar do height/width */
+    /*overflow: hidden; /* esconde o que passar do height/width */
     display: flex;
     justify-content: space-between; /* horizontal center start end */
     align-items: center;/* vertical */
-    padding: 0 14% 0 14%;
+    padding: 0 14% 15px 14%;
 }
- 
+
 header figure
 {
     padding: var(--margemInterna);
     width: 14%;
     align-self: start;/* muda o alinhamento vertical deste item */
 }
- 
+
 .esconde
 {
     display: none;
 }
 
- 
 /*-----------------------------------------
-            Menu
+            Menu 
 -----------------------------------------*/
 header nav ul li
 {
@@ -77,7 +76,7 @@ header nav ul li
     list-style-type: none;
     position: relative;
 }
- 
+
 /*  links em repouso */
 header nav ul li a
 {
@@ -87,7 +86,7 @@ header nav ul li a
     padding: 6px 15px;
     transition: all 0.3s ease-in-out;
 }
- 
+
 /* link hover mouse sobre o link */
 header nav ul li:hover a,
 .paginaAtual
@@ -95,7 +94,7 @@ header nav ul li:hover a,
     color: #f90;
     transition: all 0.5s ease-in-out; /* anima as alterações do hover */
 }
- 
+
 /* barrinha abaixo dos links*/
 header nav ul li a::before
 {
@@ -109,32 +108,28 @@ header nav ul li a::before
     box-shadow: 0 0 3px var(--corPrincipal);
     transition: all 0.3s ease-in-out;
 }
- 
+
 header nav ul li:hover a::before,
 .paginaAtual::before
 {
     width: 90%;
     transition: all 0.5s ease-in-out;
 }
- 
-header nav ul li {
-    position: relative;
-}
 
-
-header nav ul li ul {
+header nav ul li ul
+{
     padding: 10px 20px;
     position: absolute;
     z-index: 300!important;
     top: 40px;
-    right:-90%;
+    right: -90%;
     background: orange;
 }
 
-header nav ul li ul li ul{
-    background: red;
+header nav ul li ul li ul
+{
+    background: #ff0050;
 }
-
 
 /*-----------------------------------------
             Slide
@@ -145,14 +140,10 @@ header nav ul li ul li ul{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     z-index: 10;
 }
- 
-.splide__progress__bar {
-  height: 3px;
-  background: var(--corPrincipal);
-}
- 
+
 /*-----------------------------------------
             Conteúdos
 -----------------------------------------*/
@@ -162,27 +153,27 @@ main
     display: flex;
     justify-content: space-between;
 }
- 
+
 main section
 {
     padding: 0 1%;
 }
- 
+
 main section > *
 {
     margin-top: 1.2rem;
 }
- 
+
 main section ul
 {
     list-style-position: inside;
 }
- 
+
 main figure
 {
     width: 35%;
 }
- 
+
 article
 {
     width: 72%;
@@ -190,7 +181,7 @@ article
     display: flex;
     flex-direction: column;
 }
- 
+
 article div
 {
     width: 100%;
@@ -198,20 +189,20 @@ article div
     margin-top: 1.2rem;
     justify-content: space-between;
 }
- 
+
 article figure
 {
     width: 15%;
-   
+    
 }
- 
+
 article figcaption a
 {
     margin-top: 1.2rem;
     color: #333;
     text-decoration: none;
 }
- 
+
 footer
 {
     background: #333;
@@ -221,16 +212,18 @@ footer
     color: #fff;
     font-size: 1rem;
 }
- 
+
 footer ul li
 {
     list-style-type: none;
     display: inline-block;
     margin: 1rem 2rem;
 }
- 
+
 footer ul li a
 {
     color: #fff;
     text-decoration: none;
 }
+
+

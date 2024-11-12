@@ -1,55 +1,81 @@
 services:
+
 # banco de dados mySQL
     db:
         image: mysql:5.7.22 # imagem do docker hub escolhida
-        platform: linux/x86_64 # SO escolhido para o Banco
+        platform: linux/x86_64 # SO escolhido para o banco
         restart: unless-stopped # serviço sempre reiniciado
         container_name: python-db # nome do serviço
+    
         environment:
             MYSQL_DATABASE: ${DB_DATABASE:-python}
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
             MYSQL_PASSWORD: ${DB_PASSWORD:-python}
             MYSQL_USER: ${DB_USERNAME:-python}
+        
         volumes: # pastas espelhadas no container
             - ./.dados/mysql/dbdata:/var/lib/mysql
+    
         ports: # portas de acesso
-            - "3308:3306"
-        networks: 
+            - "3309:3306"
+        networks:
         - python_network
 
-    # serviços são os containers no Docker que são como VM's
+    # serviços são os container no Docker que são como VM's 
     # o Docker não tem uma "tela" para uso
-    # noVNC - para dar acesso à tela do container Ubuntu
+    # noVNC - para dar acesso à tela do container Ubuntu 
     python:
         # a construção (copiar) será na raiz da pasta
         build: .
         # porta da VM : Porta no container
         ports:
-        - "7090:7092"
+        - "7092:7092"
         # persistência/cópia de dados
         volumes:
         - ./src:/src
         environment:
+        # tela virtual que será usada pelo noVNC
         - DISPLAY=:0
-        tty: true    
+        # terminal dentro do container python
+        tty: true 
 
-    nginx:
-        build: ./nginx/
-        ports:
-            - 8090:80
-
+# serviço que roda o container php porta padrão 9000
+    app:
+        image: php:8.2-fpm
+        container_name: php_app
         volumes:
-            - ./aplicacao/:/var/wwww/html/   
+            - ./api:/var/www/
+        networks:
+            - python_network
 
-    php:
-        build: ./php/ #pasta de config do container 
-        expose:
-            - 8000 # porta de uso do PHP 
-        volumes: 
-            - ./aplicacao/:/var/www/html            
-        
+    # Servidor Web nGinx
+    nginx:
+        image: nginx:latest
+        container_name: nginx_web
+        depends_on:
+            - app
+        volumes:
+            - ./api:/var/www/
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - "8090:80"
+        networks:
+            - python_network
 
- 
 networks:
     python_network: # nome da rede
         driver: bridge # permite a comunicação em rede entre os containers
+
+# ver os containers   
+# docker ps
+# 127.0.0.1:9000
+
+# cria as imagens dos containers 
+# docker compose build
+
+# removendo os containers (descarta tudo )
+# docker compose down
+
+# colocar os containers atualizados em funcionamento
+# docker compose up -d --build
+

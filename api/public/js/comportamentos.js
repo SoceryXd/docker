@@ -8,22 +8,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }).mount();
 });
 
+// mouseover, click, mousedown, mouseout
 document.querySelector("#sistema").addEventListener('click', function (e) {
-    e.preventDefault();// impede comportamento padrão
-
+    e.preventDefault();// impede o comportamento padrão
 
     let sub01 = document.querySelector("#sub01");
-    let sub02 = document.querySelector("#sub02");
 
-    if (sub01.style.display != 'block') {
-
+    if (sub01.style.display != 'block')
+    {
         sub01.style.display = "block";
     }
-    else 
-    {
+    else {
         sub01.style.display = "none";
     }
 
-   
 
 });
+
+
+
+
